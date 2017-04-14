@@ -169,10 +169,17 @@ def print_exception(err, prefix="An unexpected error occurred", do_before_trace=
 def main(args):
     try:
         if (len(args) == 0):
+            print("")
             print("Usage:")
-            print("  Create: %s USERNAME" % sys.argv[0])
-            print("  Remove: %s --remove USERNAME" % sys.argv[0])
-            print("  Review: %s --review USERNAME" % sys.argv[0])
+            print("  1. Assign the coding challenge to a GitHub username:")
+            print("    %s GITHUB_USERNAME" % sys.argv[0])
+            print("")
+            print("  2. Remove the candidate create a pull request for review:")
+            print("    %s --remove GITHUB_USERNAME" % sys.argv[0])
+            print("")
+            print("  3. After the interview process is complete, remove the coding challenge:")
+            print("    %s --review GITHUB_USERNAME" % sys.argv[0])
+            print("")
             sys.exit(1)
 
         username = args.pop(0)
