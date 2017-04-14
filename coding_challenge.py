@@ -23,7 +23,8 @@ repo_homepage = os.getenv("HOMEPAGE")
 
 teams = [os.getenv("GITHUB_ENGINEERING_TEAM"), os.getenv("GITHUB_RECRUITING_TEAM")]
 
-team_ids = [github.get_team(org, t)['id'] for t in teams]
+def get_team_ids():
+    return [github.get_team(org, t)['id'] for t in teams]
 
 def get_repo_name(username):
     return "challenge-{}".format(username)
@@ -80,7 +81,7 @@ def create_coding_challenge(username):
                                 new_commit_message='Coding challenge instructions',
                                 update_commit_message='Update coding challenge instructions')
 
-    for team_id in team_ids:
+    for team_id in get_team_ids():
         github.add_team_repository(team_id, org, repo_name)
 
     return username, team, repo
